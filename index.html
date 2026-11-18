@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘 뭐 먹지? 🎲 메뉴 뽑기 머신</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- 1. 제목 영역 -->
+    <header class="header">
+      <div class="badge">맛집 탐험대</div>
+      <h1>오늘 뭐 먹지? 🍽️</h1>
+      <p class="subtitle">고민은 그만! 마법의 뽑기 통이 대신 골라드려요</p>
+    </header>
+
+    <!-- 2. 음식 종류 고르기 버튼 (카테고리) -->
+    <section class="category-section" aria-label="음식 종류 선택">
+      <p class="section-label">1단계: 어떤 종류가 끌리나요?</p>
+      <div class="category-buttons" id="categoryButtons">
+        <button class="cat-btn active" data-category="전체">🌈 전체</button>
+        <button class="cat-btn" data-category="한식">🍚 한식</button>
+        <button class="cat-btn" data-category="중식">🥟 중식</button>
+        <button class="cat-btn" data-category="일식">🍣 일식</button>
+        <button class="cat-btn" data-category="양식">🍝 양식</button>
+        <button class="cat-btn" data-category="분식">🍢 분식</button>
+      </div>
+    </section>
+
+    <!-- 3. 메뉴가 짠! 하고 나타나는 '결과 상자' -->
+    <section class="result-section">
+      <div class="result-box" id="resultBox">
+        <div class="confetti-Layer" id="confettiLayer"></div>
+        <span class="result-category-tag" id="resultCategoryTag">준비 완료</span>
+        <div class="result-emoji" id="resultEmoji">❓</div>
+        <h2 class="result-name" id="resultName">버튼을 눌러보세요!</h2>
+        <p class="result-comment" id="resultComment">
+          두구두구... 과연 오늘의 운명적인 메뉴는 무엇일까요?
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. 메뉴 뽑기 마법 버튼 -->
+    <section class="action-section">
+      <button class="pick-btn" id="pickBtn">
+        <span class="pick-btn-icon">🎲</span>
+        <span class="pick-btn-text">오늘의 메뉴 뽑기!</span>
+      </button>
+    </section>
+
+    <!-- 5. 나만의 메뉴 추가하기 & 뽑기 통 구경하기 -->
+    <section class="custom-section">
+      <div class="custom-header">
+        <h3>➕ 나만의 메뉴 추가하기</h3>
+        <p>내가 좋아하는 음식을 뽑기 통에 직접 넣어보세요!</p>
+      </div>
+
+      <form class="add-form" id="addMenuForm">
+        <div class="form-row">
+          <select id="menuCategoryInput" aria-label="음식 종류">
+            <option value="한식">🍚 한식</option>
+            <option value="중식">🥟 중식</option>
+            <option value="일식">🍣 일식</option>
+            <option value="양식">🍝 양식</option>
+            <option value="분식">🍢 분식</option>
+          </select>
+          <select id="menuEmojiInput" aria-label="아이콘 선택">
+            <option value="🍗">🍗 치킨/고기</option>
+            <option value="🍕">🍕 피자/빵</option>
+            <option value="🍜">🍜 면 요리</option>
+            <option value="🍲">🍲 찌개/국물</option>
+            <option value="🍱">🍱 밥/도시락</option>
+            <option value="🌶️">🌶️ 매콤한 요리</option>
+            <option value="🍔">🍔 버거/간편식</option>
+            <option value="🥗">🥗 샐러드/건강식</option>
+            <option value="🍰">🍰 디저트/간식</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            id="menuNameInput"
+            placeholder="메뉴 이름 (예: 마라탕, 삼겹살)"
+            maxlength="20"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            id="menuCommentInput"
+            placeholder="한 줄 코멘트 (비워두면 자동으로 적어줘요!)"
+            maxlength="50"
+          />
+          <button type="submit" class="add-btn">넣기!</button>
+        </div>
+      </form>
+
+      <!-- 현재 뽑기 통 안에 들어있는 메뉴 목록 -->
+      <div class="pool-container">
+        <div class="pool-header">
+          <span>🎒 현재 뽑기 통 속 메뉴 (<strong id="poolCount">0</strong>개)</span>
+          <button type="button" class="reset-btn" id="resetBtn" title="처음 상태로 되돌리기">
+            기본 메뉴로 초기화
+          </button>
+        </div>
+        <div class="pool-tags" id="poolTags"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
